@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peek Photobooth | Select 4</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="select">
+<header class="app-header"><h1 class="brand">Peek Photobooth</h1><nav><a href="index.html">Home</a></nav></header>
+<div id="progress" class="progress-nav"></div>
+<main class="app-main">
+  <h2 class="fancy">III. Select Your Four</h2>
+  <p class="intro">Choose your favorite four. Click to toggle a photo. Use Retake if needed.</p>
+  <div class="select-instructions">Selected: <span id="selected-count">0</span>/4</div>
+  <div id="captured-grid" class="captured-grid big"></div>
+  <div class="nav-row">
+    <a class="button" href="layout.html">Back</a>
+    <button id="to-templates" type="button" disabled class="primary">
+      <span class="icon">🖼️</span> Next: Choose Frame
+    </button>
+  </div>
+</main>
+<footer class="app-footer">Step III of V &mdash; Select</footer>
+<script src="app.js"></script>
+<script src="pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peek Photobooth | Tone & Finish</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="mode">
+<header class="app-header"><h1 class="brand">Peek Photobooth</h1><nav><a href="index.html">Home</a></nav></header>
+<div id="progress" class="progress-nav"></div>
+<main class="app-main">
+  <h2 class="fancy">V. Tone & Download</h2>
+  <p class="intro">Choose Color or Black &amp; White. Preview updates as you switch. Download when you’re happy.</p>
+  <div class="tone-layout">
+    <div class="tone-controls">
+      <div class="toolbar">
+        <label><input type="radio" name="mode" value="color" checked> Color</label>
+        <label><input type="radio" name="mode" value="bw"> Black &amp; White</label>
+      </div>
+      <div class="download-section">
+        <button id="download" class="primary large">
+          <span class="icon">📥</span> Download Thy Collage
+        </button>
+        <p class="download-note">High-quality PNG format, ready to print or share</p>
+      </div>
+    </div>
+    <div class="tone-preview">
+      <h3 class="subhead">Final Preview</h3>
+      <div id="tone-preview" class="collage-preview skeleton"></div>
+    </div>
+  </div>
+  <div class="nav-row">
+    <a class="button" href="templates.html">&larr; Frame</a>
+    <a class="button" href="index.html">Start New Session</a>
+  </div>
+</main>
+<footer class="app-footer">Step V of V &mdash; Final Creation</footer>
+<script src="app.js"></script>
+<script src="pages.js"></script>
+</body>
+</html>

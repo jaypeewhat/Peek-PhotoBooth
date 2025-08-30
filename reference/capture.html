@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peek Photobooth | Capture Session</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="capture">
+<header class="app-header"><h1 class="brand">Peek Photobooth</h1><nav><a href="index.html">Home</a></nav></header>
+<div id="progress" class="progress-nav"></div>
+<main class="app-main">
+  <h2 class="fancy">II. Timed Capture</h2>
+  <p class="intro">We’ll take <strong>four</strong> photos for you automatically. A short countdown appears before each shot.</p>
+  <div class="session-controls">
+  <button id="start-session" class="primary" disabled>
+    <span class="icon">🎬</span> Commence the Session
+  </button>
+    <div class="session-status" id="session-status" aria-live="polite"></div>
+  </div>
+  <div id="camera-panel" class="camera-panel big" hidden>
+    <video id="camera" autoplay playsinline></video>
+    <div class="camera-hints">Remain composed; adjust only between flashes. All remains upon this device.</div>
+    <div id="camera-status" class="camera-status" aria-live="polite"></div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+  <div class="nav-row">
+    <a class="button" href="layout.html">&larr; Format</a>
+    <button id="skip-to-select" disabled>Continue to Selection &rarr;</button>
+  </div>
+</main>
+<footer class="app-footer">Step II of V &mdash; Capture</footer>
+<script src="app.js"></script>
+<script src="pages.js"></script>
+</body>
+</html>

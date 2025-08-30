@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peek Photobooth | Choose Layout & Capture</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-page="layout">
+<header class="app-header"><h1 class="brand">Peek Photobooth</h1><nav><a href="index.html">Home</a></nav></header>
+<div id="progress" class="progress-nav"></div>
+<main class="app-main">
+  <h2 class="fancy">I. Choose Layout</h2>
+  <p class="intro">Pick a composition for your collage. Continue when ready.</p>
+  <div id="layouts" class="choices large"></div>
+  <div class="nav-row">
+    <a class="button" href="index.html">&larr; Back</a>
+    <button id="to-capture" class="primary" disabled>
+      <span class="icon">📸</span> Proceed to Capture &rarr;
+    </button>
+  </div>
+</main>
+<footer class="app-footer">Step I of V &mdash; Format</footer>
+<script src="app.js"></script>
+<script src="pages.js"></script>
+</body>
+</html>

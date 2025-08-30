@@ -1,0 +1,11 @@
+{
+  "name": "photobooth-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Simple static server for PhotoBooth prototype",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT"
+}
