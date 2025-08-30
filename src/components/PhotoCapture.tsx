@@ -4,7 +4,7 @@ import { CameraComponent } from './CameraComponent';
 import { usePhotobooth } from '../context/PhotoboothContext';
 
 export function PhotoCapture() {
-  const { state, addPhoto, removePhoto, retakePhoto, setCurrentStep, setIsCapturing } = usePhotobooth();
+  const { state, addPhoto, retakePhoto, setCurrentStep, setIsCapturing } = usePhotobooth();
   const [countdown, setCountdown] = useState<number | null>(null);
   const [retakeIndex, setRetakeIndex] = useState<number | null>(null);
 
