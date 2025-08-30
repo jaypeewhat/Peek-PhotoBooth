@@ -44,66 +44,14 @@ export function PhotoPreview() {
     }
   ];
 
-  // Function to draw the Peek logo on canvas
+  // Function to draw simple PEEK text on canvas
   const drawPeekLogo = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, isDarkBackground: boolean = false) => {
-    const logoSize = Math.min(width * 0.8, height * 0.8);
-    const logoX = x + (width - logoSize) / 2;
-    const logoY = y + (height - logoSize) / 2;
-    
-    // Main rounded rectangle background
-    ctx.fillStyle = isDarkBackground ? '#f7f3e8' : '#1e3a5f';
-    const cornerRadius = logoSize * 0.13;
-    
-    ctx.beginPath();
-    ctx.roundRect(logoX, logoY, logoSize, logoSize, cornerRadius);
-    ctx.fill();
-    
-    // Inner white/light area
-    const innerSize = logoSize * 0.78;
-    const innerX = logoX + (logoSize - innerSize) / 2;
-    const innerY = logoY + (logoSize - innerSize) / 2;
-    const innerRadius = cornerRadius * 0.5;
-    
-    ctx.fillStyle = isDarkBackground ? '#1e3a5f' : '#ffffff';
-    ctx.beginPath();
-    ctx.roundRect(innerX, innerY, innerSize, innerSize, innerRadius);
-    ctx.fill();
-    
-    // Photo/image icon - circle (sun/moon)
-    const circleRadius = logoSize * 0.07;
-    const circleX = innerX + innerSize * 0.28;
-    const circleY = innerY + innerSize * 0.28;
-    
-    ctx.fillStyle = isDarkBackground ? '#f7f3e8' : '#1e3a5f';
-    ctx.beginPath();
-    ctx.arc(circleX, circleY, circleRadius, 0, Math.PI * 2);
-    ctx.fill();
-    
-    // Mountain/landscape silhouette
-    const mountainY = innerY + innerSize * 0.72;
-    const mountainStartX = innerX + innerSize * 0.05;
-    const mountainEndX = innerX + innerSize * 0.95;
-    
-    ctx.beginPath();
-    ctx.moveTo(mountainStartX, mountainY);
-    ctx.lineTo(innerX + innerSize * 0.2, innerY + innerSize * 0.52);
-    ctx.lineTo(innerX + innerSize * 0.35, innerY + innerSize * 0.62);
-    ctx.lineTo(innerX + innerSize * 0.5, innerY + innerSize * 0.45);
-    ctx.lineTo(innerX + innerSize * 0.65, innerY + innerSize * 0.55);
-    ctx.lineTo(innerX + innerSize * 0.8, innerY + innerSize * 0.4);
-    ctx.lineTo(mountainEndX, mountainY);
-    ctx.closePath();
-    ctx.fill();
-    
-    // Add "peek" text below the logo
-    const textY = logoY + logoSize + (height - logoSize) * 0.3;
-    const fontSize = Math.min(width * 0.15, height * 0.08);
-    
-    ctx.fillStyle = isDarkBackground ? '#f7f3e8' : '#1e3a5f';
-    ctx.font = `700 ${fontSize}px "Playfair Display", serif`;
+    // Draw PEEK text
+    ctx.fillStyle = isDarkBackground ? '#f7f3e8' : '#6d5322';
+    ctx.font = `700 ${Math.min(height * 0.4, width * 0.2)}px "Playfair Display", serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('peek', x + width / 2, textY);
+    ctx.fillText('PEEK', x + width / 2, y + height / 2);
   };
 
   const selectedTemplate = templates.find(t => t.id === state.selectedFrame);
@@ -190,9 +138,9 @@ export function PhotoPreview() {
           );
         })}
         
-        {/* Logo area - show actual logo instead of just text */}
+        {/* Logo area - back to simple text */}
         <div
-          className="absolute flex flex-col items-center justify-center"
+          className="absolute flex items-center justify-center"
           style={{
             left: layout.logoArea.x * scale,
             top: layout.logoArea.y * scale,
@@ -200,72 +148,16 @@ export function PhotoPreview() {
             height: layout.logoArea.pixelHeight * scale,
           }}
         >
-          {/* Logo Icon */}
-          <div 
-            style={{
-              width: Math.min(layout.logoArea.pixelWidth * scale * 0.6, layout.logoArea.pixelHeight * scale * 0.6),
-              height: Math.min(layout.logoArea.pixelWidth * scale * 0.6, layout.logoArea.pixelHeight * scale * 0.6),
-            }}
-          >
-            <svg 
-              viewBox="0 0 120 120" 
-              className="w-full h-full"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Main rounded rectangle background */}
-              <rect 
-                x="8" 
-                y="8" 
-                width="104" 
-                height="104" 
-                rx="16" 
-                ry="16" 
-                fill={selectedTemplate?.background.includes('linear-gradient(135deg,#1f1a11,#2b2416)') || 
-                     selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#1e3a5f'}
-              />
-              
-              {/* Inner white/light area */}
-              <rect 
-                x="18" 
-                y="18" 
-                width="84" 
-                height="84" 
-                rx="8" 
-                ry="8" 
-                fill={selectedTemplate?.background.includes('linear-gradient(135deg,#1f1a11,#2b2416)') || 
-                     selectedTemplate?.background.includes('radial-gradient') ? '#1e3a5f' : '#ffffff'}
-              />
-              
-              {/* Photo/image icon - circle */}
-              <circle 
-                cx="42" 
-                cy="42" 
-                r="8" 
-                fill={selectedTemplate?.background.includes('linear-gradient(135deg,#1f1a11,#2b2416)') || 
-                     selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#1e3a5f'}
-              />
-              
-              {/* Mountain/landscape silhouette */}
-              <path 
-                d="M22 78 L35 58 L48 68 L62 52 L75 62 L88 48 L98 78 Z" 
-                fill={selectedTemplate?.background.includes('linear-gradient(135deg,#1f1a11,#2b2416)') || 
-                     selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#1e3a5f'}
-              />
-            </svg>
-          </div>
-          
-          {/* Peek text below logo */}
           <span 
-            className="font-bold font-playfair mt-1"
+            className="font-bold font-playfair"
             style={{
-              fontSize: Math.min(layout.logoArea.pixelHeight * scale * 0.15, layout.logoArea.pixelWidth * scale * 0.08),
+              fontSize: Math.min(layout.logoArea.pixelHeight * scale * 0.4, layout.logoArea.pixelWidth * scale * 0.2),
               fontWeight: 700,
               color: selectedTemplate?.background.includes('linear-gradient(135deg,#1f1a11,#2b2416)') || 
-                     selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#1e3a5f'
+                     selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#6d5322'
             }}
           >
-            peek
+            PEEK
           </span>
         </div>
       </div>
