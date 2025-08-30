@@ -24,8 +24,11 @@ export function CameraComponent({ onCapture, isCapturing }: CameraComponentProps
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
-    // Draw the video frame to canvas
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // Flip the canvas horizontally to match the mirrored video display
+    context.save();
+    context.scale(-1, 1);
+    context.drawImage(video, -canvas.width, 0, canvas.width, canvas.height);
+    context.restore();
 
     // Get the image data as base64
     const photoDataUrl = canvas.toDataURL('image/jpeg', 0.9);
@@ -86,6 +89,7 @@ export function CameraComponent({ onCapture, isCapturing }: CameraComponentProps
           muted
           onLoadedMetadata={handleVideoReady}
           className="w-full h-full object-cover"
+          style={{ transform: 'scaleX(-1)' }}
         />
         
         {!isReady && (
