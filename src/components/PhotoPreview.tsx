@@ -44,14 +44,14 @@ export function PhotoPreview() {
     }
   ];
 
-  // Function to draw simple PEEK text on canvas
+  // Function to draw simple THE PEEK text on canvas
   const drawPeekLogo = (ctx: CanvasRenderingContext2D, x: number, y: number, width: number, height: number, isDarkBackground: boolean = false) => {
-    // Draw PEEK text
+    // Draw THE PEEK text
     ctx.fillStyle = isDarkBackground ? '#f7f3e8' : '#6d5322';
     ctx.font = `700 ${Math.min(height * 0.4, width * 0.2)}px "Playfair Display", serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('PEEK', x + width / 2, y + height / 2);
+    ctx.fillText('THE PEEK', x + width / 2, y + height / 2);
   };
 
   const selectedTemplate = templates.find(t => t.id === state.selectedFrame);
@@ -157,7 +157,7 @@ export function PhotoPreview() {
                      selectedTemplate?.background.includes('radial-gradient') ? '#f7f3e8' : '#6d5322'
             }}
           >
-            PEEK
+            THE PEEK
           </span>
         </div>
       </div>
